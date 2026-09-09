@@ -89,6 +89,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@config': path.resolve(__dirname, 'config.yml'),
+      '@shoes': path.resolve(__dirname, 'shoes.yml'),
       '@core': path.resolve(__dirname, './src/core'),
       '@themes': path.resolve(__dirname, './src/themes'),
       '@assets': path.resolve(__dirname, './assets'),

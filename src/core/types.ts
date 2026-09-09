@@ -17,3 +17,6 @@ export interface Activity {
 }
 
 export type SportFilter = 'all' | 'Run';
+
+/** Dashboard 主题的页面标识（Header 与 dashboard/index.tsx 共用） */
+export type Page = 'home' | 'tracks' | 'shoes';

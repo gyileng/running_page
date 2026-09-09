@@ -1,0 +1,33 @@
+# 鞋柜数据 — Shoe cabinet data
+#
+# 这个文件是鞋柜的真源，不会被任何同步脚本覆盖。
+# 你可以直接手写，也可以在网页「鞋柜」页面里编辑后点「导出」，
+# 把生成的内容粘贴回这里并提交。
+#
+# 字段说明：
+#   id            必填，创建后不要再改（run_ids 靠它关联）
+#   brand/model   品牌 / 型号
+#   nickname      可选，页面优先显示它
+#   image         可选，本地路径（放 public/images/shoes/）或 http(s) 远程地址
+#   purchase_date 可选，YYYY-MM-DD
+#   price         可选，用于计算每公里成本
+#   lifespan_km   可选，报废阈值，缺省 800
+#   retired       是否已退役
+#   note          可选备注
+#   run_ids       穿这双鞋跑过的 activity run_id 列表
+#
+# 示例：
+#   shoes:
+#     - id: vaporfly-3
+#       brand: Nike
+#       model: Vaporfly 3
+#       nickname: 比赛鞋
+#       image: /images/shoes/vaporfly3.jpg
+#       purchase_date: 2024-03-01
+#       price: 1899
+#       lifespan_km: 500
+#       retired: false
+#       note: ''
+#       run_ids: [3690937657]
+
+shoes: []

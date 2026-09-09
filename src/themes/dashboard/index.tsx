@@ -1,6 +1,6 @@
 import './index.css';
 import { useMemo, useState } from 'react';
-import type { Activity } from '@/types';
+import type { Activity, Page } from '@/types';
 import {
   useFilteredActivities,
   getAvailableYears,
@@ -18,8 +18,8 @@ import { ProfileCard } from '@/components/ProfileCard';
 import { PersonalBest } from '@/components/PersonalBest';
 import { TracksPage } from '@/components/TracksPage';
 import { ChinaMap } from '@/components/ChinaMap';
-
-type Page = 'home' | 'tracks';
+import { ShoeCabinet } from '@/components/ShoeCabinet';
+import { ShoesProvider } from '@/hooks/useShoes';
 
 function Dashboard() {
   const activities = getActivityData() as Activity[];
@@ -61,6 +61,9 @@ function Dashboard() {
           onSelectActivity={setSelectedActivity}
           onBack={() => setPage('home')}
         />
+      ) : page === 'shoes' ? (
+        /* 里程要按全量活动统计，不能传年份筛选后的 filtered */
+        <ShoeCabinet activities={activities} />
       ) : (
         <main className="mx-auto max-w-[1400px] px-6 py-6">
           <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[1fr_360px] xl:grid-cols-[1fr_380px]">
@@ -128,4 +131,11 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+/** 鞋柜状态要在鞋柜页和首页表格之间共享，故 Provider 提到页面之上 */
+export default function DashboardTheme() {
+  return (
+    <ShoesProvider>
+      <Dashboard />
+    </ShoesProvider>
+  );
+}

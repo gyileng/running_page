@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import type { Activity, SportFilter } from '../types';
 import { formatDuration, formatPace } from '../hooks/useActivities';
 import { useLocale } from '../hooks/useLocale';
+import { ShoeSelect } from './ShoeSelect';
 
 interface ActivityLogProps {
   activities: Activity[];
@@ -145,6 +146,7 @@ export function ActivityLog({
               <th className="pb-3 font-medium">{t('duration')}</th>
               <th className="pb-3 font-medium">{t('pace')}</th>
               <th className="pb-3 font-medium">{t('hr')}</th>
+              <th className="pb-3 font-medium">{t('shoeColumn')}</th>
             </tr>
           </thead>
           <tbody>
@@ -185,6 +187,9 @@ export function ActivityLog({
                 </td>
                 <td className="py-3 text-[var(--color-muted)]">
                   {a.average_heartrate ? Math.round(a.average_heartrate) : '--'}
+                </td>
+                <td className="py-3">
+                  <ShoeSelect runId={a.run_id} compact />
                 </td>
               </tr>
             ))}
